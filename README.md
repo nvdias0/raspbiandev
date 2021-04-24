@@ -26,4 +26,4 @@ Includes:
 ### Notes
 - The run script always deletes a previous run container: this means that any changes made to the development image will not be kept between runs. Of couse that all compilation done in the /development directory is mantained.
 - To keep changes between runs, just edit the run.sh script and comment the "docker container rm" line.
-- A docker image is also available in the docker hub for a direct download and install. It will be faster to download, but it will not include the run script as in this git.
+- A docker image is also available in the docker hub nvdias/raspbiandev for a direct download and install. It will be faster to download, but it will not include the run script as in this git.
