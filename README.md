@@ -13,12 +13,12 @@ Includes:
 - basic dev tools for raspberry pi compilation
 - starts in /development that will map from the host ~/development
 
-## download and extract
+## Download and extract
     wget https://github.com/nvdias0/raspbiandev/archive/refs/heads/main.zip
     unzip main.zip
     rm main.zip
     
-## run
+## Run
     cd raspbiandev-main
     ./run.sh
 
