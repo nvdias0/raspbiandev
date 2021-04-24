@@ -6,6 +6,10 @@ Docker must be installed.
 
 Just download, extract and run script. It will create the docker image if needed and run a container.
 
+The container bash starts in directory 
+    /development 
+that will map from the host 
+    ~/development
 
 ## download and extract
     wget https://github.com/nvdias0/raspbiandev/archive/refs/heads/main.zip
