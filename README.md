@@ -17,7 +17,7 @@ that will map from the host
     rm main.zip
     
 ## run
-    cd raspbiandev
+    cd raspbiandev-main
     ./run.sh
 
 
