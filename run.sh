@@ -14,6 +14,8 @@
 # just commnet the container removal at the start of the script.
 #
 
+[ "$(which docker)" == "" ] && echo "Docker not installed !" && exit
+
 dockerimg=nvdias/raspbiandev
 name=raspbian.dev
 devdir=~/development
