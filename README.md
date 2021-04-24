@@ -1,8 +1,11 @@
 # raspbiandev
 
-Native raspberry pi compilation in LibreELEC with docker
-Tested in LibreELEC and osmc.
+Native raspberry pi compilation with DOCKER
+
+Tested in LibreELEC and Osmc.
+
 Docker must be installed.
+
 
 Includes:
 - raspbian jester
