@@ -6,12 +6,14 @@ FROM raspbian/stretch
 WORKDIR /root
 
 # update bashrc
-RUN echo "export LS_OPTIONS='--color=auto'" >> .bashrc \
- && echo "alias ls='ls $LS_OPTIONS'" >> .bashrc \
- && echo "alias ll='ls $LS_OPTIONS -l'" >> .bashrc \
- && echo "alias l='ls $LS_OPTIONS -lA'" >> .bashrc \
- && echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/vc/lib" >> .bashrc
- 
+RUN printf " \n\
+export LS_OPTIONS='--color=auto' \n\
+alias ls='ls \$LS_OPTIONS' \n\
+alias ll='ls \$LS_OPTIONS \n\
+alias l='ls \$LS_OPTIONS \n\
+export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/opt/vc/lib \n\
+" >> .bashrc
+
 # update packages
 RUN apt-get -y update
 #apt-get upgrade
