@@ -23,7 +23,6 @@ devdir=~/development
 mkdir -p $devdir
 
 
-
 # Creates an image locally if it does not exist
 
 if [ "$(docker images | grep $dockerimg)" == "" ]; then
@@ -38,26 +37,34 @@ fi
 # [ ! -f .local_build ] && echo docker pull $dockerimg
 
 
+
+#########################################################################################################
 #
-# COMMENT THE FOLLOWING LINE TO AVOID REMOVING CHANGES MADE by you IN THE CONTAINER (BINARIES, LIBS ...)
+# COMMENT the followimg line to KEEP CHANGES IN CONTAINER (bins, libs, etc) between calls
 #
-docker container rm $name
+
+docker container rm $name > /dev/null
+
+#########################################################################################################
+
 
 
 if [ "$(docker ps -a | grep $name)" == "" ]; then
-  # container does not exist. Create container and start.
+  # Container does not exist. Create container and start.
   echo "--> DOCKER RUN  ..."
   docker run -v $devdir:/development -w /development --privileged -it --name=$name $dockerimg bash 
+
 else
   if [ "$(docker ps | grep $name)" == "" ]; then
-    # Container not running. Start Container
+    # Container exists but is not running. Start Container
+
     echo "--> DOCKER START ..."
     docker start $name
+    
+    echo "--> DOCKER EXEC bash"
+    docker exec -it $name bash
   fi
 fi
-
-#enter command line
-docker exec -it $name bash
 
 if [ "$(docker ps | grep $name)" != "" ]; then
   # Container is running. Stop Container
