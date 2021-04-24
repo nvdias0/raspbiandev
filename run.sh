@@ -11,7 +11,7 @@
 # at exit, the container stops and is deleted (the image is kept for next runs).
 #
 # if you want to keep changes to the container (new binaries, libs or configs),
-# just commnet the container removal at the start of the script.
+# just comment the container removal at the start of the script.
 #
 
 [ "$(which docker)" == "" ] && echo "Docker not installed !" && exit
@@ -33,7 +33,7 @@ if [ "$(docker images | grep $dockerimg)" == "" ]; then
  echo > .local_build
 fi
 
-# download / update image - don't use if the image was creted with  a local build
+# download / update image - don't use if the image was created with  a local build
 # [ ! -f .local_build ] && echo docker pull $dockerimg
 
 
