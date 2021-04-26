@@ -30,6 +30,9 @@ RUN apt-get -y install \
  libvo-amrwbenc-dev libvorbis-dev libwebp-dev libx264-dev libx265-dev libxcb-shape0-dev libxcb-shm0-dev  \
  libxcb-xfixes0-dev libxcb1-dev libxml2-dev lzma-dev zlib1g-dev \
  python3-dev python3-pip   
+ 
+# install upx for compressing binaries (after strip)
+RUN apt-get -y install upx
 
 # install vc from raspberry pi
 RUN wget https://github.com/nvdias0/raspbiandev/archive/refs/heads/main.zip \
