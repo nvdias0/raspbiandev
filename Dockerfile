@@ -33,7 +33,7 @@ RUN apt-get -y install \
  python3-dev python3-pip   
 
 # additional installs for tvheadend compilation
-RUN apt-get -y install libdvbcsa-dev gettext python
+RUN apt-get -y install libdvbcsa-dev libhdhomerun-dev gettext python
 
 # install upx for compressing binaries (after strip)
 RUN apt-get -y install upx
