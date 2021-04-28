@@ -17,7 +17,7 @@
 [ "$(which docker)" == "" ] && echo "Docker not installed !" && exit
 
 dockerimg=nvdias/raspbiandev
-name=raspbian.dev
+name=raspbian-dev
 devdir=~/development
 
 mkdir -p $devdir
@@ -52,7 +52,7 @@ docker container rm $name > /dev/null
 if [ "$(docker ps -a | grep $name)" == "" ]; then
   # Container does not exist. Create container and start.
   echo "--> DOCKER RUN  ..."
-  docker run -v $devdir:/development -w /development --privileged -it --name=$name $dockerimg bash 
+  docker run -v $devdir:/development -w /development --privileged -it --hostname=$name --name=$name $dockerimg bash 
 
 else
   if [ "$(docker ps | grep $name)" == "" ]; then
