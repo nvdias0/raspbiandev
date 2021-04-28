@@ -12,7 +12,6 @@ alias ls='ls \$LS_OPTIONS' \n\
 alias ll='ls \$LS_OPTIONS -l' \n\
 alias l='ls \$LS_OPTIONS -lA' \n\
 alias make='make -j4' \n\
-alias python='/usr/bin/python3' \n\
 export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/opt/vc/lib \n\
 " >> .bashrc
 
@@ -32,7 +31,10 @@ RUN apt-get -y install \
  libvo-amrwbenc-dev libvorbis-dev libwebp-dev libx264-dev libx265-dev libxcb-shape0-dev libxcb-shm0-dev  \
  libxcb-xfixes0-dev libxcb1-dev libxml2-dev lzma-dev zlib1g-dev \
  python3-dev python3-pip   
- 
+
+# additional installs for tvheadend compilation
+RUN apt-get -y install libdvbcsa-dev gettext python
+
 # install upx for compressing binaries (after strip)
 RUN apt-get -y install upx
 
