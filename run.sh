@@ -1,6 +1,8 @@
 #!/bin/bash
 
 #
+# run script V210430-1211
+#
 # This script creates a docker image for
 # RASPERRY PI NATIVE DEVELOPMENT in closed systems (as LIBREELEC).
 # 
@@ -13,12 +15,24 @@
 # if you want to keep changes to the container (new binaries, libs or configs),
 # just comment the container removal at the start of the script.
 #
+#
+# Calling the script without parameters gives shell access
+# Passing parameters to the script will execute them and exit
+#
 
 [ "$(which docker)" == "" ] && echo "Docker not installed !" && exit
 
 dockerimg=nvdias/raspbiandev
 name=raspbian-dev
 devdir=~/development
+
+ITERACTIVE="-it"
+
+if [ "$1" == "" ];then
+  CMD="bash"
+else
+  CMD="$*"
+fi
 
 mkdir -p $devdir
 
@@ -52,7 +66,7 @@ docker container rm $name > /dev/null
 if [ "$(docker ps -a | grep $name)" == "" ]; then
   # Container does not exist. Create container and start.
   echo "--> DOCKER RUN  ..."
-  docker run -v $devdir:/development -w /development --privileged -it --hostname=$name --name=$name $dockerimg bash 
+  docker run -v $devdir:/development -w /development --privileged $ITERACTIVE --hostname=$name --name=$name $dockerimg bash -c "$CMD"
 
 else
   if [ "$(docker ps | grep $name)" == "" ]; then
@@ -62,7 +76,7 @@ else
     docker start $name
     
     echo "--> DOCKER EXEC bash"
-    docker exec -it $name bash
+    docker exec $ITERACTIVE $name bash -c "$CMD"
   fi
 fi
 
