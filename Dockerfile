@@ -12,7 +12,6 @@ alias ls='ls \$LS_OPTIONS' \n\
 alias ll='ls \$LS_OPTIONS -l' \n\
 alias l='ls \$LS_OPTIONS -lA' \n\
 alias make='make -j4' \n\
-alias p=python \n\
 export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/opt/vc/lib \n\
 " >> .bashrc
 
