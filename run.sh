@@ -40,6 +40,7 @@ mkdir -p $devdir
 
 
 # Creates an image locally if it does not exist
+# add anything in "" to ignore build --> tries to load from docker.io on docker run
 
 if [ "$(docker images | grep $dockerimg)" == "" ]; then
  echo "--> DOCKER image creation."
@@ -48,10 +49,6 @@ if [ "$(docker images | grep $dockerimg)" == "" ]; then
  docker build -t $dockerimg .
  echo > .local_build
 fi
-
-# download / update image - don't use if the image was created with  a local build
-# [ ! -f .local_build ] && echo docker pull $dockerimg
-
 
 
 #########################################################################################################
@@ -66,7 +63,7 @@ docker container rm $name > /dev/null
 
 
 if [ "$(docker ps -a | grep $name)" == "" ]; then
-  # Container does not exist. Create container and start.
+  # Container does not exist. Create container and start. If image is not in local storage, download from docker.io
   echo "--> DOCKER RUN  ..."
   docker run -v $devdir:/development -w /development --privileged $ITERACTIVE --hostname=$name --name=$name $dockerimg bash -c "$CMD"
 
