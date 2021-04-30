@@ -17,7 +17,9 @@
 #
 #
 # Calling the script without parameters gives shell access
-# Passing parameters to the script will execute them and exit
+# Passing parameters to the script will execute them and exit.
+# example:
+#   ./run.sh "cd FFmpeg; git pull"
 #
 
 [ "$(which docker)" == "" ] && echo "Docker not installed !" && exit
