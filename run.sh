@@ -31,8 +31,10 @@ devdir=~/development
 ITERACTIVE="-it"
 
 if [ "$1" == "" ];then
+  ITERACTIVE="-it"
   CMD="bash"
 else
+  ITERACTIVE=""
   CMD="$*"
 fi
 
