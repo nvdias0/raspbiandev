@@ -54,11 +54,13 @@ fi
 
 
 #########################################################################################################
-#
-# COMMENT the followimg line to KEEP CHANGES IN CONTAINER (bins, libs, etc) between calls
-#
+# COMMENT the "docker container rm" line to KEEP CHANGES IN CONTAINER (bins, libs, etc) between calls
+#########################################################################################################
 
-docker container rm $name > /dev/null
+if [ "$(docker ps -a | grep $name)" != "" ]; then
+  echo "--> DELETE PREVIOUS CONTAINER"
+  docker container rm $name > /dev/null
+fi
 
 #########################################################################################################
 
