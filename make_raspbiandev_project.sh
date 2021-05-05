@@ -24,7 +24,14 @@ echo "
 Making $1 in background
 "
 
-nohup ./run.sh "export LD_LIBRARY_PATH=/opt/vc/lib; cd $1; git pull; svn update; make -j4" > $LOG &
+# Script to run in container is between ""
+nohup ./run.sh "
+  export LD_LIBRARY_PATH=/opt/vc/lib; 
+  cd $1; 
+  svn update; 
+  git pull; 
+  make -j4
+" > $LOG &
 
 CHILD=$!
 CHILD_CMD=$(ps -ea | grep $CHILD | grep -v "grep")
