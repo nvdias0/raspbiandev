@@ -38,6 +38,7 @@ RUN apt-get -y install \
 
 # additional installs for tvheadend compilation
 RUN apt-get -y install libdvbcsa-dev libhdhomerun-dev gettext python pngquant libpcre2-dev ccache libavahi-client-dev
+RUN apt-get -y install debhelper liburiparser-dev python3-requests
 
 # download, compile and install libiconv needed by tvheadend
 RUN wget https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.16.tar.gz \
