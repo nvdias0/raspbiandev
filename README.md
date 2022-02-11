@@ -24,11 +24,10 @@ Includes:
 
 
 ### Notes
-- run.sh script tries to reuse a previous container keeping last chagens.
-- run.sh --clean  resets the container as to the initial image.
-- run.sh --pull   forces to pull updated image.
-- run-sh --build  forces creating imagem from ubuntu and install all software (VERY SLOW)
-- docker image is available in the docker hub nvdias/raspbiandev for a direct download and install. It will be faster to download then making everything.
+- "run.sh" script tries to reuse a previous container keeping last chagens.
+- "run.sh --clean" resets the container as to the initial image.
+- "run.sh --pull"  forces pull pre-built updated image from docker hub.
+- "run-sh--build"  forces creating imagem from ubuntu and install all software (VERY SLOW).
 - You should need 800 MB storage to have the image in your system.
 
 
