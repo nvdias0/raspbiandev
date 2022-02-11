@@ -20,15 +20,16 @@ Includes:
     
 ## Run
     cd raspbiandev-main
-    ./run-clean.sh
+    ./run.sh
 
 
 ### Notes
-- The run-clean.sh script always deletes a previous run container: this means that any changes made to the development image will not be kept between runs. Of couse that all compilation done in the /development directory is mantained.
-- To keep changes between runs, just use the run-keep.sh script.
-- A docker image is also available in the docker hub nvdias/raspbiandev for a direct download and install. It will be faster to download, but it will not include the run script as in this git.
+- run.sh script tries to reuse a previous container keeping last chagens.
+- run.sh --clean  resets the container as to the initial image.
+- run.sh --pull   forces to pull updated image.
+- run-sh --build  forces creating imagem from ubuntu and install all software (VERY SLOW)
+- docker image is available in the docker hub nvdias/raspbiandev for a direct download and install. It will be faster to download then making everything.
 - You should need 800 MB storage to have the image in your system.
-
 
 
 ### Suggested git projects for Raspberry pi compilation
