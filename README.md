@@ -28,7 +28,7 @@ Includes:
 - "run.sh --clean" resets the container as to the initial image.
 - "run.sh --pull"  forces pull pre-built updated image from docker hub.
 - "run-sh--build"  forces creating imagem from ubuntu and install all software (VERY SLOW).
-- You should need 800 MB storage to have the image in your system.
+- 800 MB storage space is needed for the docker image.
 
 
 ### Suggested git projects for Raspberry pi compilation
