@@ -1,0 +1,29 @@
+# Prepare
+
+
+git clone https://github.com/transmission/transmission.git
+cd transmission
+git submodule update --init --recursive
+mkdir build 
+
+
+# Compile 
+
+cd build
+
+  # Uupdate:
+     make clean
+     git pull --rebase --prune
+     git submodule update --recursive
+
+cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+make
+make package
+
+# Targets in:
+build/transmission-0.1.1-Linux.tar.gz
+build/daemon
+build/utils
+web/public_html
+
+

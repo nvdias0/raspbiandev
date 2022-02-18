@@ -33,12 +33,18 @@ RUN apt-get -y install \
  libsnappy-dev libsoxr-dev libv4l-dev libva-dev libvdpau-dev  libssl-dev \
  libvo-amrwbenc-dev libvorbis-dev libwebp-dev libx264-dev libx265-dev libxcb-shape0-dev libxcb-shm0-dev  \
  libxcb-xfixes0-dev libxcb1-dev libxml2-dev lzma-dev zlib1g-dev \
- patchelf \
+ patchelf ncurses-dev kmod bc \
  python3-dev python3-pip   
+ 
+# transmission dependencies
+RUN apt-get -y install build-essential automake autoconf libtool \
+pkg-config intltool libcurl4-openssl-dev libglib2.0-dev \
+libevent-dev libminiupnpc-dev libgtk-3-dev libappindicator3-dev
 
-# additional installs for tvheadend compilation
-RUN apt-get -y install libdvbcsa-dev libhdhomerun-dev gettext python pngquant libpcre2-dev ccache libavahi-client-dev
-RUN apt-get -y install debhelper liburiparser-dev python3-requests
+# tvheadend dependencies
+RUN apt-get -y install libdvbcsa-dev libhdhomerun-dev gettext python pngquant \
+libpcre2-dev ccache libavahi-client-dev \
+debhelper liburiparser-dev python3-requests
 
 # download, compile and install libiconv needed by tvheadend
 RUN wget https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.16.tar.gz \
@@ -46,18 +52,26 @@ RUN wget https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.16.tar.gz \
  && cd libiconv-1.16 \
  && ./configure --prefix=/usr/local \
  && make \
- && make install
+ && make install \
+ && cd .. \
+ && rm -r libiconv-1.16
+
+# tvheadend nightlies accessable with "apt-get download tvheadend"
+# it will download the last dpkg package which can be unpacked with "dpkg -x tvheadendxxxx.dpkg ."
+RUN apt-get -y install coreutils apt-transport-https lsb-release ca-certificates \
+ && wget -qO- https://doozer.io/keys/tvheadend/tvheadend/pgp | apt-key add - \
+ && echo "deb http://apt.tvheadend.org/unstable raspbian-stretch main" > /etc/apt/sources.list.d/tvheadend.list
+
 
 # install upx for compressing binaries (after strip)
 RUN apt-get -y install upx
 
-# install vc from raspberry pi
+# install vc from raspberry pi and needed libcrypto for LE11 compatibility
 RUN wget https://github.com/nvdias0/raspbiandev/archive/refs/heads/main.zip \
  && unzip main.zip \
  && mkdir -p /opt \
  && cp -r raspbiandev-main/vc /opt/ \
  && rm -r raspbiandev-main \
  && rm main.zip \
- && chmod a+x /opt/vc/bin/*
- 
+ && chmod a+x /opt/vc/bin/* 
  

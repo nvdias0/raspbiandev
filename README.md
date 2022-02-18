@@ -27,7 +27,7 @@ Includes:
 - "run.sh" script tries to reuse a previous container keeping last chagens.
 - "run.sh --clean" resets the container as to the initial image.
 - "run.sh --pull"  forces pull pre-built updated image from docker hub.
-- "run-sh--build"  forces creating imagem from ubuntu and install all software (VERY SLOW).
+- "run-sh --build"  forces creating imagem from ubuntu and install all software (VERY SLOW).
 - 800 MB storage space is needed for the docker image.
 
 
