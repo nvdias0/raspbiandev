@@ -32,7 +32,7 @@ RUN apt-get -y install \
  libopus-dev librtmp-dev libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev   \
  libsnappy-dev libsoxr-dev libv4l-dev libva-dev libvdpau-dev  libssl-dev \
  libvo-amrwbenc-dev libvorbis-dev libwebp-dev libx264-dev libx265-dev libxcb-shape0-dev libxcb-shm0-dev  \
- libxcb-xfixes0-dev libxcb1-dev libxml2-dev lzma-dev zlib1g-dev \
+ libxcb-xfixes0-dev libxcb1-dev libxml2-dev lzma-dev zlib1g-dev libdrm-dev \
  patchelf ncurses-dev kmod bc \
  python3-dev python3-pip   
  
